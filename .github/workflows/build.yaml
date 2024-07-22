@@ -30,7 +30,7 @@ jobs:
         allure-endpoint: https://demo.testops.cloud
         allure-token: ${{ secrets.ALLURE_TOKEN }}
         allure-project-id: 2486
-      env: 
-        ALLURE_RESULTS: allure-results  
     - run: npm install
     - run: allurectl watch -- npx cypress run
+      env: 
+        ALLURE_RESULTS: ./allure-results  
