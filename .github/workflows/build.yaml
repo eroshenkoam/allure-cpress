@@ -25,5 +25,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
+    - uses: allure-framework/setup-allurectl@v1
+      with:
+        allure-endpoint: https://demo.testops.cloud
+        allure-token: ${{ secrets.ALLURE_TOKEN }}
+        allure-project-id: 2486
     - run: npm install
-    - run: npx cypress run
+    - run: allurectl watch -- npx cypress run
+      env: 
+        ALLURE_RESULTS: ./allure-results  
